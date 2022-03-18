@@ -17,3 +17,7 @@ Selain `vite` masih banyak tools lain untuk membundler aplikasi javascript, cont
 - dll
 
 untuk lebih jelasnya, temen" bisa pelajari sendiri.
+
+### SCREENSHOT APP
+
+<img src="./.github/assets/IMG_0707.PNG">
