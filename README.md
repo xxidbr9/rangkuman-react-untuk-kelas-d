@@ -17,5 +17,5 @@ Materi dibawah ini adalah hasil dari live session bersama mentor (@xxidbr9)
 git checkout <target_branch>
 ```
 
-  1. [Introducing React](./tree/17-03-2022)
+  1. [Introducing React](https://github.com/xxidbr9/rangkuman-react-untuk-kelas-d/tree/17-03-2022)
 
