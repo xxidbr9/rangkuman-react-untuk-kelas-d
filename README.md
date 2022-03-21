@@ -11,7 +11,7 @@ git clone https://github.com/xxidbr9/rangkuman-react-untuk-kelas-d.git
 ```
 
 #### List Brach
-Materi dibawah ini adalah hasil dari live session bersama mentor (@xxidbr9)
+Materi dibawah ini adalah hasil dari live session bersama mentor nando [@xxidbr9](https://github.com/xxidbr9/)
 
 ```bash
 git checkout <target_branch>
