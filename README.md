@@ -19,4 +19,4 @@ git checkout <target_branch>
 
   1. [Introducing React](https://github.com/xxidbr9/rangkuman-react-untuk-kelas-d/tree/17-03-2022)
   2. [Hooks](https://github.com/xxidbr9/rangkuman-react-untuk-kelas-d/tree/29-03-2022)
-
+  3. [Redux](https://github.com/xxidbr9/rangkuman-react-untuk-kelas-d/tree/02-04-2022)
