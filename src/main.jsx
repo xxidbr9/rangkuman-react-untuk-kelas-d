@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import App from './App'
+import 'react-spring-bottom-sheet/dist/style.css'
+// import App from './App'
+import App from './App_ReduxToolkit'
+
 
 ReactDOM.render(
   <React.StrictMode>

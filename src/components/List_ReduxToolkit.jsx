@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { editTodo, removeTodoAction } from "../redux-store/reducers";
+import { todoAction } from "../reduxtoolkit-store/features/todo";
 import ListItem from "./ListItem";
 
 const StyledUl = styled.ul`
@@ -15,11 +15,12 @@ const List = ({ todos, ...props }) => {
   const dispatch = useDispatch();
 
   const _handleClick = id => {
-    dispatch(editTodo(id));
+    dispatch(todoAction.editTodo({ id }));
   };
 
+  // ini boleh ditaruh luar atau didalam, karna state bentuknya global
   const _handleRemove = id => {
-    dispatch(removeTodoAction(id));
+    dispatch(todoAction.removeTodo({ id }));
   };
 
   return (

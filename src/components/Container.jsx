@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 const Container = styled.div`
   width: auto;
   padding: 0 1.5rem;
-`
+  max-width: 390px;
+  margin: auto;
+`;
 
 /* 
 Sama dengan ini
@@ -15,4 +17,4 @@ const Container1 = ({ children }) => {
   )
 } */
 
-export default Container
+export default Container;

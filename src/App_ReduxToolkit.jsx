@@ -1,9 +1,10 @@
 import React from "react";
 
-import HomePage from "./pages/home";
-import store, { persistore } from "./redux-store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+
+import { store, persistore } from "./reduxtoolkit-store";
+import HomePage from "./pages/home_ReduxToolkit";
 
 const App = () => {
   return (

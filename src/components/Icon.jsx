@@ -25,7 +25,7 @@ const Icon = ({ badge = 0, src, color, ...props }) => {
   const IconSrc = src
 
   return (
-    <WrapperStyled>
+    <WrapperStyled {...props}>
       {!!badge && <BadgeStyled>{badge}</BadgeStyled>}
       <IconSrc color={color} />
     </WrapperStyled>

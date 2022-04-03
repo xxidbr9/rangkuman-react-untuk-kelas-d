@@ -1,16 +1,18 @@
-import styled from '@emotion/styled'
-import propTypes from 'prop-types'
-import React, { useState } from 'react'
-import CheckIcon from '../assets/svg/Check.icon'
-import colors from '../utils/styles/colors'
-
+import styled from "@emotion/styled";
+import propTypes from "prop-types";
+import React from "react";
+import CheckIcon from "../assets/svg/Check.icon";
+import TrashIcon from "../assets/svg/Trash.icon";
+import colors from "../utils/styles/colors";
+import Icon from "./Icon";
 
 const WrapperList = styled.li`
-  list-style-type:none;
+  list-style-type: none;
+  width: auto;
   padding: 0;
-  margin:0;
+  margin: 0;
   display: flex;
-  align-items:center;
+  align-items: center;
   column-gap: 16px;
   & input[type="checkbox"] {
     clip: rect(0 0 0 0);
@@ -21,10 +23,11 @@ const WrapperList = styled.li`
     white-space: nowrap;
     width: 1px;
   }
-  & label{
-    color:${props => props.isChecked ? "#808080" : "#000"};
-    text-decoration: ${props => props.isChecked ? "line-through" : "none"};
-    transition: all ease-out .1s ;
+  & label {
+    color: ${props => (props.isChecked ? "#808080" : "#000")};
+    text-decoration: ${props => (props.isChecked ? "line-through" : "none")};
+    transition: all ease-out 0.1s;
+    font-size: 1rem;
   }
 
   & .checkbox {
@@ -36,9 +39,9 @@ const WrapperList = styled.li`
     background: #fff;
     border: 2px #ddd solid;
     border-radius: 8px;
-    overflow:hidden;
+    overflow: hidden;
     .icon {
-        display: none;
+      display: none;
     }
   }
 
@@ -47,38 +50,56 @@ const WrapperList = styled.li`
     width: 24px;
     border-color: ${colors.ternary};
     background: ${colors.ternary};
-    transition: all ease-out .2s;
-    .icon{
+    transition: all ease-out 0.2s;
+    .icon {
       display: block;
     }
   }
+`;
+
+const FlexDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const TodoItemStyled = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: .75rem;
 `
 
-const ListItem = ({ isComplete, children, ...props }) => {
-
-  const [isChecked, setIsChecked] = useState(isComplete)
-
-  const _handleClick = () => {
-    setIsChecked((prevValue) => !prevValue)
-  }
-
+const ListItem = ({ isComplete, children, onClick, onDelete, ...props }) => {
   return (
-    <WrapperList onClick={_handleClick} isChecked={isChecked}>
-      <input type={"checkbox"} checked={isChecked} name={"checkbox"} />
-      <span
-        className={`checkbox ${isChecked ? "checkbox--active" : ""}`}
-        // buat hide element secara teori
-        aria-hidden="true"
-      >
-        <CheckIcon color={"#ffffff"} size={24} className={"icon"} />
-      </span>
-      <label htmlFor="checkbox">{children}</label>
+    <WrapperList isChecked={isComplete}>
+      <FlexDiv>
+        <TodoItemStyled>
+          <input
+            type={"checkbox"}
+            checked={isComplete}
+            value={isComplete}
+            name={"checkbox"}
+          />
+          <span
+            onClick={onClick}
+            className={`checkbox ${isComplete ? "checkbox--active" : ""}`}
+            // buat hide element secara teori
+            aria-hidden='true'>
+            <CheckIcon color={"#ffffff"} size={24} className={"icon"} />
+          </span>
+          <label onClick={onClick} htmlFor='checkbox'>
+            {children}
+          </label>
+        </TodoItemStyled>
+        <Icon src={() => <TrashIcon color={colors.ternary}/>} onClick={onDelete} />
+      </FlexDiv>
     </WrapperList>
-  )
-}
+  );
+};
 
 ListItem.propTypes = {
   isComplete: propTypes.bool
-}
+};
 
-export default ListItem
+export default ListItem;
