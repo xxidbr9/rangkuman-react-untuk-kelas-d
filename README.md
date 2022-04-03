@@ -17,6 +17,6 @@ Selengkapmya bisa dilihat di repo sebelumnya di tanggal [29-03-2022](https://git
 
 
 ### Screenshot 📸
-<img src="./.github/assets/IMG_0840.png">
+<img src="./.github/assets/IMG_0840.PNG">
 
 
