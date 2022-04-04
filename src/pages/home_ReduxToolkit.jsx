@@ -43,7 +43,7 @@ const HomePage = () => {
 const InputTodo = ({ open, onDismiss }) => {
   const sheetRef = useRef();
 
-  const [title, setTitle] = useState("");
+  const titleInputRef = useRef(null);
   const dispatch = useDispatch();
 
   const _handleInputChange = e => {
@@ -52,6 +52,7 @@ const InputTodo = ({ open, onDismiss }) => {
 
   const _handleAddNewTodo = () => {
     const id = nanoid();
+    const title = titleInputRef.current.value;
     dispatch(
       todoAction.addTodo({
         id,
@@ -59,8 +60,9 @@ const InputTodo = ({ open, onDismiss }) => {
         completed: false
       })
     );
+    // clear value
+    titleInputRef.current.value = "";
     onDismiss();
-    setTitle("");
   };
 
   const _handleInputEnter = e => {
@@ -75,9 +77,11 @@ const InputTodo = ({ open, onDismiss }) => {
       snapPoints={({ minHeight, maxHeight }) => [minHeight]}>
       <ContainerFlex>
         <InputStyled
+          ref={titleInputRef}
           placeholder='Apa yang ingin kamu lakukan?'
           onChange={_handleInputChange}
           onKeyDown={_handleInputEnter}
+          enterKeyHint="done"
         />
         <Button onClick={_handleAddNewTodo}>Add ToDo</Button>
       </ContainerFlex>
