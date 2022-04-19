@@ -30,7 +30,7 @@ const initialTodoState = {
 
 const TODO_CONSTANT = {
   SET_TODOS: "SET_TODOS",
-  ADD_TODO: "ADD_TODO",
+  ADD_TODO: "todos/ADD_TODO",
   EDIT_TODO: "EDIT_TODO",
   DELETE_TODO: "DELETE_TODO"
 };
@@ -62,14 +62,13 @@ const todoReducer = (state = initialTodoState, action) => {
     case TODO_CONSTANT.DELETE_TODO:
       return {
         ...state,
-        todos: state.todos.filter(todo => todo.id !== action.payload.id)
+        todos: state.todos.filter(todo => todo.id !== action.payload.todoID)
       };
 
     default:
       return state;
   }
 };
-
 
 export const addTodoAction = todo => {
   return {
@@ -107,17 +106,20 @@ export const editTodoThunk = id => (dispatch, getState) => {
   dispatch(_setTodos(todos)); // bakal bikin ngelag
 };
 
-export const removeTodoAction = id => {
+export const removeTodoAction = todoID => {
   return {
     type: TODO_CONSTANT.DELETE_TODO,
     payload: {
-      id
+      todoID,
+      gatauIniApaan: "haha"
     }
   };
 };
 
 const rootReducer = combineReducers({
-  todoReducer: persistReducer(todoPersistConfig, todoReducer)
+  todoState: persistReducer(todoPersistConfig, todoReducer),
+  todoGatau: persistReducer(todoPersistConfig, todoReducer),
+  todoApa: persistReducer(todoPersistConfig, todoReducer)
 });
 
 export default rootReducer;

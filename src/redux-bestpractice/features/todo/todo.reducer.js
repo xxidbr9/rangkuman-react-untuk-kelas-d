@@ -4,14 +4,16 @@ import TODO_CONSTANT from "./todo.constant";
 
 // state besar yang mirip dengan useState object
 const initialTodoState = {
-  todos: []
+  todos: [],
+  helo: "",
+  bla: ""
 };
 
 const todoReducer = (state = initialTodoState, action) => {
   switch (action.type) {
     case TODO_CONSTANT.ADD_TODO:
       return {
-        ...state,
+        ...state, //
         todos: [...state.todos, action.payload.newTodo]
       };
 

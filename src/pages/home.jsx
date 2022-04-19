@@ -14,7 +14,7 @@ import { nanoid } from "nanoid";
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const todos = useSelector(state => state.todoReducer.todos);
+  const todos = useSelector(globalState => globalState.todoState.todos);
 
   const _handleClose = () => {
     setIsOpen(false);
@@ -48,13 +48,24 @@ const InputTodo = ({ open, onDismiss }) => {
 
   const _handleAddNewTodo = () => {
     const id = nanoid();
-    dispatch(
-      addTodoAction({
+
+    const newTodo = {
+      id,
+      title,
+      complete: false
+    };
+
+    dispatch(addTodoAction(newTodo));
+    // object ini dikirim menjadi action di reducer
+    dispatch({
+      todoBaru: {
         id,
-        title,
-        complete: false
-      })
-    );
+        complete: false,
+        title: "ini sebuah title"
+      },
+      type: "todos/ADD_TODO"
+    });
+
     onDismiss();
     setTitle("");
   };

@@ -1,10 +1,10 @@
 import TODO_CONSTANT from "./todo.constant";
 
-export const addTodoAction = newTodo => {
+export const addTodoAction = newTodoArgs => {
   return {
     type: TODO_CONSTANT.ADD_TODO,
     payload: {
-      newTodo
+      newTodo: newTodoArgs
     }
   };
 };
